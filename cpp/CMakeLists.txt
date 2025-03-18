@@ -12,17 +12,28 @@ if (NOT EMSCRIPTEN)
 endif()
 lazperf_add_library(${LAZPERF_STATIC_LIB} STATIC ${SRCS})
 
+file(GLOB HEADERS
+    lazperf/*.hpp
+)
+
+file(GLOB HEADERS_DETAILS
+    lazperf/detail/*.hpp
+)
+
 install(
     FILES
-        lazperf/lazperf.hpp
-        lazperf/filestream.hpp
-        lazperf/header.hpp
-        lazperf/readers.hpp
-        lazperf/vlr.hpp
-        lazperf/writers.hpp
+        ${HEADERS}
     DESTINATION
         include/lazperf
 )
+
+install(
+    FILES
+        ${HEADERS_DETAILS}
+    DESTINATION
+        include/lazperf/detail
+)
+
 install(
     FILES
         lazperf/lazperf_user_base.hpp
