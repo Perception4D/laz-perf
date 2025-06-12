@@ -37,6 +37,13 @@ function(lazperf_target_compile_settings target)
         -Wno-unknown-pragmas
         -Wno-deprecated-declarations
     )
+
+    if (NOT BUILD_SHARED_LIBS)
+        # add -fPIC for shared libraries
+        target_compile_options(${target} PRIVATE
+            -fPIC
+        )
+    endif()
     if (PDAL_COMPILER_CLANG)
         target_compile_options(${target} PRIVATE
             -Wno-unknown-warning-option
