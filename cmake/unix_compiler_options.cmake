@@ -44,9 +44,9 @@ function(lazperf_target_compile_settings target)
     endif()
 endfunction()
 
-function(lazperf_library_compile_settings lib type)
+function(lazperf_library_compile_settings lib)
     lazperf_target_compile_settings(${lib})
-    if (${type} STREQUAL "SHARED")
+    if (BUILD_SHARED_LIBS)
         target_compile_options(${lib} PRIVATE
             -fvisibility=hidden
             -fvisibility-inlines-hidden

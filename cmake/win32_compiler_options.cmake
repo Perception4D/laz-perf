@@ -44,7 +44,7 @@ function(lazperf_target_compile_settings target)
     endif()
 endfunction()
 
-function(lazperf_library_compile_settings lib type)
+function(lazperf_library_compile_settings lib)
     lazperf_target_compile_settings(${lib})
 endfunction()
 
